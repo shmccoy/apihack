@@ -1,25 +1,8 @@
-window.addEventListener("load", e => {
-    const url = "http://www.omdbapi.com/?apikey=7b56d36";
-    fetch(url)
+fetch('http://omdbapi.com/?apikey=7b56d36&t=it')
         .then(response => {
-            if (!response.ok) {
-                throw new Error(response.statusText);
+            if (response.ok) {
+                return response.json();
             }
-            return response.json();
+            throw new Error(response.statusText);
         })
-        .then(data => {
-            console.log(data);
-            const output = data.collection.items
-                .map(
-                    item => `
-        <div>
-          <h2>${item.data[0].title}</h2>
-          <img src="${item.links[0].href}" />
-          <p>${item.data[0].description}</p>
-      </div>`
-                )
-                .join("");
-            document.querySelector(".results").innerHTML = output;
-        })
-        .catch(error => console.log(error.message));
-});
+        .then(movie => console.log(movie));
