@@ -1,129 +1,80 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset='utf-8'>
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximunm-scale=1,user-scalable=no">
-    <meta http-equiv="x-UA-Compatible" content="IE=edge, chrome=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <meta http-equiv="x-UA-Compatible" content="IE=edge, chrome=1" />
     <title>Muvico Movies</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src='main.js'></script>
-</head>
-
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+    <script>"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"</script>
+  </head>
+​
+  <body>
     <header>MUVICO</header>
     <main>
-        <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
-        <button class="tablink" onclick="openPage('NewReleases', this, 'green')">New Releases</button>
-        <button class="tablink" onclick="openPage('Movies', this, 'blue')">Movies</button>
-        <button class="tablink" onclick="openPage('Actors', this, 'orange')">Actors</button>
-        <button class="tablink" onclick="openPage('Directors', this, 'purple')">Directors</button>
-
-        <div id="Home" class="tabcontent"></div>
-
-        <div id="NewReleases" class="tabcontent">
-            <form class="searchBar">
-                <input type="text" placeholder="Search.." name="search2">
-                <button type="submit" class="search">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
-            <h1>New Releases</h1>
-            <div id="myBtnContainer">
-                <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-                <button class="btn" onclick="filterSelection('cars')"> Horror</button>
-                <button class="btn" onclick="filterSelection('animals')"> Action</button>
-                <button class="btn" onclick="filterSelection('fruits')"> Comedy</button>
-                <button class="btn" onclick="filterSelection('colors')"> Drama</button>
-            </div>
-
-            <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
-            <div class="container">
-                <div class="filterDiv cars">BMW</div>
-                <div class="filterDiv colors fruits">Orange</div>
-                <div class="filterDiv cars">Volvo</div>
-                <div class="filterDiv colors">Red</div>
-                <div class="filterDiv cars animals">Mustang</div>
-                <div class="filterDiv colors">Blue</div>
-                <div class="filterDiv animals">Cat</div>
-                <div class="filterDiv animals">Dog</div>
-                <div class="filterDiv fruits">Melon</div>
-                <div class="filterDiv fruits animals">Kiwi</div>
-                <div class="filterDiv fruits">Banana</div>
-                <div class="filterDiv fruits">Lemon</div>
-                <div class="filterDiv animals">Cow</div>
-            </div>
-            <div class="newRel coverArt"></div>
-        </div>
-
-        <div id="Movies" class="tabcontent">
-            <form class="searchBar" id="titleForm">
-                <input type="text" placeholder="Search.." name="search2">
-                <button type="submit" class="search">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
-            <h1>Movies</h1>
-            <div id="myBtnContainer">
-                <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-                <button class="btn" onclick="filterSelection('cars')"> Horror</button>
-                <button class="btn" onclick="filterSelection('animals')"> Action</button>
-                <button class="btn" onclick="filterSelection('fruits')"> Comedy</button>
-                <button class="btn" onclick="filterSelection('colors')"> Drama</button>
-            </div>
-
-            <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
-            <div class="container">
-                <div class="filterDiv cars">BMW</div>
-                <div class="filterDiv colors fruits">Orange</div>
-                <div class="filterDiv cars">Volvo</div>
-                <div class="filterDiv colors">Red</div>
-                <div class="filterDiv cars animals">Mustang</div>
-                <div class="filterDiv colors">Blue</div>
-                <div class="filterDiv animals">Cat</div>
-                <div class="filterDiv animals">Dog</div>
-                <div class="filterDiv fruits">Melon</div>
-                <div class="filterDiv fruits animals">Kiwi</div>
-                <div class="filterDiv fruits">Banana</div>
-                <div class="filterDiv fruits">Lemon</div>
-                <div class="filterDiv animals">Cow</div>
-            </div>
-
-            <div class="mov coverArt"></div>
-        </div>
-
-        <div id="Actors" class="tabcontent">
-            <form class="searchBar" action="/action_page.php">
-                <input type="text" placeholder="Search.." name="search2">
-                <button type="submit" class="search">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
-            <h1>Actors</h1>
-            <div class="act coverArt"></div>
-        </div>
-
-        <div id="Directors" class="tabcontent">
-            <form class="searchBar" action="/action_page.php">
-                <input type="text" placeholder="Search.." name="search2">
-                <button type="submit" class="search">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
-            <h1>Directors</h1>
-            <div class="direct coverArt"></div>
-        </div>
-
-        <!-- <form class="searchBar" action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search2"> 
-            <button type="submit" class="search">
-                <i class="fa fa-search"></i>
-            </button> 
-        </form> -->
+      <button class="tablink" data-tab="Home" id="defaultOpen">
+        Home
+      </button>
+      <button class="tablink" data-tab="Movies">
+        Movies
+      </button>
+      <button class="tablink" data-tab="Actors">
+        Actors
+      </button>
+​
+      <div id="Home" class="tabcontent">
+        <h3>New Releases</h3>
+        <div class="result" id="newreleases"></div>
+      </div>
+​
+      <div id="Movies" class="tabcontent">
+        <form class="searchBarMovie">
+          <input
+            type="text"
+            id="titleForm"
+            placeholder="Search.."
+            name="search2"
+          />
+          <button type="submit" class="search">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+        <!-- <h1>Movies</h1> -->
+​
+        <div class="result" id="movie"></div>
+​
+        <div class="mov coverArt"></div>
+      </div>
+​
+      <div id="Actors" class="tabcontent">
+        <h2>Actors</h2>
+        <form class="searchBarActor">
+          <input
+            type="text"
+            id="actorForm"
+            placeholder="Search.."
+            name="search2"
+          />
+          <button type="submit" class="search">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+        <div class="result" id="actor"></div>
+      </div>
     </main>
     <footer id="footer">&copy; Copyright 2019, All Rights Reserved</footer>
-</body>
-
+  </body>
 </html>
