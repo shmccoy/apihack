@@ -10,7 +10,6 @@ function watchMovieSubmit(event) {
 function watchActorSubmit(event) {
   event.preventDefault();
   const searchBarActor = $("#actorForm").val();
-  performMovieSearch(searchBarMovie);
   performActorSearch(searchBarActor);
 }
 
