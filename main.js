@@ -136,6 +136,7 @@ function main() {
 
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
+  console.log('test5');
 }
 //the jQuery ready function
 $(main);
