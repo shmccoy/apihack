@@ -130,6 +130,7 @@ function main() {
   console.log("The main function");
   $(".searchBarMovie").submit(watchMovieSubmit);
   $(".searchBarActor").submit(watchActorSubmit);
+  newReleases();
 
   $(".tablink").click(tabLinkHandler);
 
