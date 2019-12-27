@@ -24,8 +24,7 @@ function newReleases() {
       console.log(sortedMovies);
     });
 }
-  newReleases();
-
+  
 function sortCriteria(a, b) {
   if (moment(b.release_date).isAfter(a.release_date)) {
     return 1;
@@ -37,6 +36,7 @@ function sortCriteria(a, b) {
     }
   }
 }
+newReleases();
 
 function performMovieSearch(query) {
   const base_url =
