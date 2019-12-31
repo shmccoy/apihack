@@ -22,8 +22,12 @@ function newReleases() {
       const movies = data.results;
       const sortedMovies = movies.sort(sortCriteria).slice(0, 5);
       console.log(sortedMovies);
+      renderNewReleases(sortedMovies);
     });
+    
+    
 }
+newReleases();
   
 function sortCriteria(a, b) {
   if (moment(b.release_date).isAfter(a.release_date)) {
@@ -36,7 +40,6 @@ function sortCriteria(a, b) {
     }
   }
 }
-newReleases();
 
 function performMovieSearch(query) {
   const base_url =
@@ -80,9 +83,9 @@ function renderNewReleases(results) {
     results
       .map(
         item => `<div class="slideshow-container">
-        <div class="mySlides fade">
-      <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}" style="width:100%"/>
-        </div>
+        
+      <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
+        
       </div>
       <br>
         <div style="text-align:center">
