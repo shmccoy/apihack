@@ -23,11 +23,11 @@ function newReleases() {
       const sortedMovies = movies.sort(sortCriteria).slice(0, 5);
       renderNewReleases(sortedMovies);
     });
-    
-    
+
+
 }
 newReleases();
-  
+
 function sortCriteria(a, b) {
   if (moment(b.release_date).isAfter(a.release_date)) {
     return 1;
@@ -90,9 +90,9 @@ function renderNewReleases(results) {
   setInterval(showSlides, 5000);
 }
 
-​let slideIndex = 0;
+let slideIndex = 0;
 
-​function showSlides() {
+function showSlides() {
   let i;
   let slides = $(".slide");
   let dots = $(".dot");
@@ -147,7 +147,7 @@ function main() {
   console.log("The main function");
   $(".searchBarMovie").submit(watchMovieSubmit);
   $(".searchBarActor").submit(watchActorSubmit);
-  
+
 
   $(".tablink").click(tabLinkHandler);
 
@@ -168,4 +168,3 @@ function tabLinkHandler(e) {
 
   $(`#${btn}`).show();
 }
-
