@@ -21,7 +21,6 @@ function newReleases() {
     .then(data => {
       const movies = data.results;
       const sortedMovies = movies.sort(sortCriteria).slice(0, 5);
-      console.log(sortedMovies);
       renderNewReleases(sortedMovies);
     });
     
@@ -78,45 +77,35 @@ function performActorSearch(query) {
 }
 
 function renderNewReleases(results) {
-  console.log(results);
-  $("#newreleases").html(
+  $(".slide-show").html(
     results
       .map(
-        item => `<div class="slideshow-container">
-        
-      <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
-        
-      </div>
-      <br>
-        <div style="text-align:center">
-        <span class="dot"></span> 
-        <span class="dot"></span> 
-        <span class="dot"></span> 
+        item => `<div class="slide">
+        <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
         </div>`
       )
       .join("")
   );
+  showSlides();
+  setInterval(showSlides, 5000);
 }
 
-var slideIndex = 0;
-showSlides();
+​let slideIndex = 0;
 
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].display = "none";  
-  }
+​function showSlides() {
+  let i;
+  let slides = $(".slide");
+  let dots = $(".dot");
+  slides.css({ opacity: 0 });
+  dots.removeClass("active");
+  slides.eq(slideIndex).css({ opacity: 1 });
   slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
+  if (slideIndex > slides.length - 1) {
+    slideIndex = 0;
   }
-  slides[slideIndex-1] = "block";  
-  dots[slideIndex-1] += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
+
+
 
 
 function renderMovie(results) {
@@ -138,15 +127,14 @@ function renderMovie(results) {
 }
 
 function renderActor(results) {
-  console.log(results);
   $("#actor").html(
     results
-      .map(
+      .map(item => item.known_for).flat().map(
         item => `<div class="image">
-      <img src= "https://image.tmdb.org/t/p/w500${item.known_for[0].poster_path}"/>
+      <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
       <div class="content">
-      <h2>${item.known_for[0].title}</h2>
-      <p>${item.known_for[0].overview}</p>
+      <h2>${item.title}</h2>
+      <p>${item.overview}</p>
       </div>
     </div>`
       )
