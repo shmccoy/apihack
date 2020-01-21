@@ -45,6 +45,10 @@ main {
   flex: 1;
 }
 
+h1 {
+  text-align: center;
+}
+
 .library {
   display: flex;
   flex-direction: column;
