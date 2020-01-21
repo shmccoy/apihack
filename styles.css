@@ -1,35 +1,48 @@
 body,
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
   margin: 0;
+}
+
+.bg {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: 0;
+  
+}
+
+.bg__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page__content {
+  z-index: 10;
   display: flex;
   flex-direction: column;
-  background: #000000 url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg/800px-Hollywood_Sign_%28Zuschnitt%29.jpg) no-repeat center center;
-  background-size: cover;
-  /*opacity: 0.5;*/
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
-
 
 header {
-    background-color: rgb(86, 119, 43);
-    text-align-last: center;
-    color: white;
-    font-size: 80px;
-}
-
-h3 {
-    background-color: rgb(217, 219, 94);
+  text-align-last: center;
+  color: black;
+  font-size: 80px;
+  font-weight: bold;
 }
 
 main {
   flex: 1;
-}
-​
-footer {
-  padding: 8px;
 }
 
 .library {
@@ -71,15 +84,13 @@ input {
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
   color: black;
-  
   padding: 100px 20px;
   height: 100%;
-  }
-  
- 
+}
+
 .filterDiv {
   float: left;
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: #ffffff;
   width: 100px;
   line-height: 100px;
@@ -113,29 +124,23 @@ input {
   color: white;
 }
 
-
-#footer {
-  background-color: rgb(20, 73, 73);
-  text-align: center;
-  font-size: 14px;
-  font-style: italic;
-}
-
 .result {
-color: black;
-display: grid;
-grid-template-columns: 1fr;
+  color: black;
+  display: grid;
+  grid-template-columns: 1fr;
 }
-
-img {vertical-align: middle;}
 
 .slide-show {
   position: relative;
+  
 }
 
 .slide {
   transition: all 1s linear;
   position: absolute;
+  height: 100%;
+  width: 100%;
+    
 }
 
 /* The dots/bullets/indicators */
@@ -153,7 +158,7 @@ img {vertical-align: middle;}
   background-color: #717171;
 }
 
-img {
+.poster {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -161,13 +166,12 @@ img {
   max-width: 300px;
 }
 
- #newreleases {
+#newreleases {
+  flex-direction: column;
+}
 
-   flex-direction: column;
- }
-
- @media screen and (min-width: 800px) {
-   .result {
-     grid-template-columns: 1fr 1fr 1fr;
-   } 
- }
+@media screen and (min-width: 800px) {
+  .result {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

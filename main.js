@@ -23,8 +23,6 @@ function newReleases() {
       const sortedMovies = movies.sort(sortCriteria).slice(0, 5);
       renderNewReleases(sortedMovies);
     });
-
-
 }
 newReleases();
 
@@ -81,7 +79,7 @@ function renderNewReleases(results) {
     results
       .map(
         item => `<div class="slide">
-        <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
+        <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}" class="poster"/>
         </div>`
       )
       .join("")
@@ -95,9 +93,7 @@ let slideIndex = 0;
 function showSlides() {
   let i;
   let slides = $(".slide");
-  let dots = $(".dot");
   slides.css({ opacity: 0 });
-  dots.removeClass("active");
   slides.eq(slideIndex).css({ opacity: 1 });
   slideIndex++;
   if (slideIndex > slides.length - 1) {
@@ -105,16 +101,13 @@ function showSlides() {
   }
 }
 
-
-
-
 function renderMovie(results) {
   console.log(results);
   $("#movie").html(
     results
       .map(
         item => `<div class="image">
-      <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
+      <img class="poster" src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
       <div class="content">
       <h2>${item.title}</h2>
       <p>${item.overview}</p>
@@ -129,9 +122,11 @@ function renderMovie(results) {
 function renderActor(results) {
   $("#actor").html(
     results
-      .map(item => item.known_for).flat().map(
+      .map(item => item.known_for)
+      .flat()
+      .map(
         item => `<div class="image">
-      <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
+      <img class="poster" src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
       <div class="content">
       <h2>${item.title}</h2>
       <p>${item.overview}</p>
@@ -148,12 +143,11 @@ function main() {
   $(".searchBarMovie").submit(watchMovieSubmit);
   $(".searchBarActor").submit(watchActorSubmit);
 
-
   $(".tablink").click(tabLinkHandler);
 
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
-  console.log('test5');
+  console.log("test5");
 }
 //the jQuery ready function
 $(main);
