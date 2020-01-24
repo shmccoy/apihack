@@ -3,27 +3,17 @@ html {
   height: 100%;
 }
 
-body {
-  margin: 0;
-}
-
-.bg {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 0.5;
-  z-index: 0;
+html { 
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvyB43TS3k3KY3fTHEsUIMm98OkvW8ZrTdX00-xMCGaOyIGb-Y&s') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   
 }
 
-.bg__image {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvyB43TS3k3KY3fTHEsUIMm98OkvW8ZrTdX00-xMCGaOyIGb-Y&s');
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+body {
+  margin: 0;
 }
 
 .page__content {
@@ -181,11 +171,18 @@ input {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  .bg__image {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg/800px-Hollywood_Sign_%28Zuschnitt%29.jpg');
-    
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .tablink {
+    font-size: x-large;
   }
-}
+
+  html { 
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg/800px-Hollywood_Sign_%28Zuschnitt%29.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100vw 100vh;
+    background-color: rgba(238, 238, 238, 0.81) !important;
+    background-blend-mode: color;
+  }
+
+}  
