@@ -3,8 +3,6 @@ function watchMovieSubmit(event) {
   //get the value
   const searchBarMovie = $("#titleForm").val();
   performMovieSearch(searchBarMovie);
-  console.log(searchBarMovie);
-  console.log("test0");
 }
 
 function watchActorSubmit(event) {
@@ -53,7 +51,6 @@ function performMovieSearch(query) {
     .catch(error => {
       $(".result").html(error.message);
     });
-  console.log("test1");
 }
 
 function performActorSearch(query) {
@@ -71,16 +68,15 @@ function performActorSearch(query) {
     .catch(error => {
       $("#actor").html(error.message);
     });
-  console.log("test2");
 }
 
 function renderNewReleases(results) {
   $(".slide-show").html(
     results
       .map(
-        item => `<div class="slide">
+        item => `<section class="slide">
         <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}" class="poster"/>
-        </div>`
+        </section>`
       )
       .join("")
   );
@@ -106,17 +102,17 @@ function renderMovie(results) {
   $("#movie").html(
     results
       .map(
-        item => `<div class="image">
+        item => `<section class="image">
       <img class="poster" src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
-      <div class="content">
+      <section class="content">
       <h2>${item.title}</h2>
       <p>${item.overview}</p>
-      </div>
-    </div>`
+      </section>
+    </section>`
       )
       .join("")
   );
-  console.log("test3");
+
 }
 
 function renderActor(results) {
@@ -125,36 +121,37 @@ function renderActor(results) {
       .map(item => item.known_for)
       .flat()
       .map(
-        item => `<div class="image">
+        item => `<section class="image">
       <img class="poster" src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
-      <div class="content">
+      <section class="content">
       <h2>${item.title}</h2>
       <p>${item.overview}</p>
-      </div>
-    </div>`
+      </section>
+    </section>`
       )
       .join("")
   );
-  console.log("test4");
 }
 
 function main() {
-  console.log("The main function");
   $(".searchBarMovie").submit(watchMovieSubmit);
   $(".searchBarActor").submit(watchActorSubmit);
 
   $(".tablink").click(tabLinkHandler);
 
+  $("body").on("error", "img", () => {
+    console.log("error");
+    $(this).attr("src", "https://previews.123rf.com/images/briang77/briang771602/briang77160200065/51883561-movie-film-reel.jpg")
+  })
+
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
-  console.log("test5");
 }
 //the jQuery ready function
 $(main);
 
 function tabLinkHandler(e) {
   const btn = $(e.target).data("tab");
-  console.log(btn);
 
   $(".tabcontent").hide();
   $(".tablink").removeClass("selectedTab");

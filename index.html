@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -8,6 +8,7 @@
     />
     <meta http-equiv="x-UA-Compatible" content="IE=edge, chrome=1" />
     <title>Muvico Movies</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton|Roboto&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -23,7 +24,7 @@
   </head>
   ​
   <body>
-    <div class="page__content">
+    <section class="page__content">
       <header>MUVICO</header>
       <main>
         <button class="tablink" data-tab="Home" id="defaultOpen">
@@ -36,15 +37,15 @@
           Actors
         </button>
         ​
-        <div id="Home" class="tabcontent">
+        <section id="Home" class="tabcontent">
           <h1>New Releases</h1>
-          <div class="result-home" id="newreleases">
-            <div class="slide-show"></div>
-          </div>
-        </div>
+          <section class="result-home" id="newreleases">
+            <section class="slide-show"></section>
+          </section>
+        </section>
         ​
-        <div id="Movies" class="tabcontent">
-          <h2>Movies</h2>
+        <section id="Movies" class="tabcontent">
+          <h2>Movie Titles</h2>
           <form class="searchBarMovie">
             <input
               type="text"
@@ -58,12 +59,12 @@
           </form>
           <!-- <h1>Movies</h1> -->
           ​
-          <div class="result" id="movie"></div>
+          <section class="result" id="movie"></section>
           ​
-          <div class="mov coverArt"></div>
-        </div>
+          <section class="mov coverArt"></section>
+        </section>
         ​
-        <div id="Actors" class="tabcontent">
+        <section id="Actors" class="tabcontent">
           <h2>Actors</h2>
           <form class="searchBarActor">
             <input
@@ -76,9 +77,9 @@
               <i class="fa fa-search"></i>
             </button>
           </form>
-          <div class="result" id="actor"></div>
-        </div>
+          <section class="result" id="actor"></section>
+        </section>
       </main>
-    </div>
+    </section>
   </body>
 </html>
