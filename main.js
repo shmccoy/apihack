@@ -64,7 +64,7 @@ function performActorSearch(query) {
       }
       return response.json();
     })
-    .then(data => renderActor(data.results))
+    .then(data => renderActor(data.results[0].known_for))
     .catch(error => {
       $("#actor").html(error.message);
     });
@@ -74,9 +74,12 @@ function renderNewReleases(results) {
   $(".slide-show").html(
     results
       .map(
-        item => `<section class="slide">
-        <img src= "https://image.tmdb.org/t/p/w500${item.poster_path}" class="poster"/>
+         item => {
+          let imgPath = (!item.poster_path ? "https://previews.123rf.com/images/briang77/briang771602/briang77160200065/51883561-movie-film-reel.jpg" : `https://image.tmdb.org/t/p/w500${item.poster_path}`);  
+          return `<section class="slide">
+        <img src= "${imgPath}" class="poster"/>
         </section>`
+      }
       )
       .join("")
   );
@@ -98,17 +101,19 @@ function showSlides() {
 }
 
 function renderMovie(results) {
-  console.log(results);
   $("#movie").html(
     results
       .map(
-        item => `<section class="image">
-      <img class="poster" src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
-      <section class="content">
+         item => {
+          let imgPath = (!item.poster_path  ? "https://previews.123rf.com/images/briang77/briang771602/briang77160200065/51883561-movie-film-reel.jpg" : `https://image.tmdb.org/t/p/w500${item.poster_path}`);  
+          return `<section class="image">
+        <img src= "${imgPath}" class="poster"/>
+        <section class="content">
       <h2>${item.title}</h2>
       <p>${item.overview}</p>
       </section>
     </section>`
+      }
       )
       .join("")
   );
@@ -118,16 +123,17 @@ function renderMovie(results) {
 function renderActor(results) {
   $("#actor").html(
     results
-      .map(item => item.known_for)
-      .flat()
       .map(
-        item => `<section class="image">
-      <img class="poster" src= "https://image.tmdb.org/t/p/w500${item.poster_path}"/>
-      <section class="content">
+         item => {
+          let imgPath = (!item.poster_path ? "https://previews.123rf.com/images/briang77/briang771602/briang77160200065/51883561-movie-film-reel.jpg" : `https://image.tmdb.org/t/p/w500${item.poster_path}`);  
+          return `<section class="image">
+        <img src= "${imgPath}" class="poster"/>
+        <section class="content">
       <h2>${item.title}</h2>
       <p>${item.overview}</p>
       </section>
     </section>`
+      }
       )
       .join("")
   );
@@ -139,10 +145,10 @@ function main() {
 
   $(".tablink").click(tabLinkHandler);
 
-  $("body").on("error", "img", () => {
+  /*$("body").on("error", "img", () => {
     console.log("error");
     $(this).attr("src", "https://previews.123rf.com/images/briang77/briang771602/briang77160200065/51883561-movie-film-reel.jpg")
-  })
+  })*/
 
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
